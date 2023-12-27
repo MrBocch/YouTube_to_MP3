@@ -1,62 +1,48 @@
-import os 
-import re
-from pytube import YouTube
+import tkinter as tk
+import ttkbootstrap as ttk
+from backend import *
 
-def setup():
-    if "music" not in os.listdir():
-        os.mkdir("music")
+def gui():
 
-def getLinks():
-    links = open("ytLinks.txt","r").read().split("\n")
-    links = list(filter(lambda line: line != "", links))
-    return links
+    def parseText():
+        t = text.get('1.0', 'end')
+        return list(filter(lambda link: link != '', t.split("\n")))
+ 
+    def download_button():
+        links = parseText()
+        setup()
+        download(links)
 
-def download(links):
-    os.chdir("music")
-    for link in links:
-        try: 
-            yt = YouTube(link)
-        except: 
-            print(f"Error on this link\n{link}")
-        else:
-            print(f"Downloading {yt.title}")
-            yt.streams.get_audio_only().download()
 
-    renameAlltoMp3()
+    window = ttk.Window(themename='darkly')
+    window.title("YouTube -> MP3")
+    window.geometry("500x500")
+    window.resizable(False, False)
 
-def renameAlltoMp3():
-    for f in os.listdir():
-        sp = f.split(".")
-        sp[1] = ".mp3"
-        try:
-            os.rename(f"{f}", f'{"".join(sp)}')
-        except:
-            print("Something went wrong in renameing file")
+    title_label = ttk.Label(master=window, text="YouTube to MP3 Converter",
+                            font='Verdana 20 bold')
 
-def renameToMp3(title):
-    try: 
-        os.rename(f"{title}.mp4", f"{title}.mp3")
-    except:
-        print(f"\n\nError at {title}")
-        print("having issues with these types of titles")
-        print("try renaming to mp3 manually\n")
+    title_label.pack()
 
-def sanatizeTitle(title):
-    # this is a very interesting issue
-    # they are certain characters that are not allowed to include in file name
-    # but they are allowed in a title of a youtube video, so i have to replace that
-    
-    # this does not include other alfabets or fonts in youtube titles
-    # illegal = r'[^a-zA-Z0-9]' 
-    # i decided not use this because there could be literally anything in the 
-    # youtube title including non-ascii characters wich is a serious pain
-    illegal = r'[^\w\s\.\-]'
-    return re.sub(illegal, '_', title, flags=re.UNICODE)
-   
+    input_frame = ttk.Frame(master=window)
+    Down_button = ttk.Button(master=input_frame, text='Download', command=download_button)
 
-def main():
-    setup()
-    download(getLinks())
+    Down_button.pack(side='left')
+    input_frame.pack(pady=10)
+
+    text = ttk.Text(window, wrap='none' ,width=50, height=20)
+    text.pack()
+
+    # output 
+    output_string = tk.StringVar()
+    output_lable = ttk.Label(master=window, 
+                            text='output',
+                            font='Calibri 24', 
+                            textvariable=output_string)
+
+    output_lable.pack(pady=10) 
+
+    window.mainloop()
 
 if __name__ == "__main__":
-    main()
+    gui()
