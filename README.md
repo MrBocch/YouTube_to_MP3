@@ -5,9 +5,10 @@
 Copy paste links onto the text area then
 click the download button
 
+![Showcase of app](screenShot.png)
+
 ## TODO 
 
-* video showcase how it works
 * have music save into any folder of chosing
 * pytoexe?
 * say when complete download
