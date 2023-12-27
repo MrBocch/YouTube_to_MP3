@@ -1,6 +1,0 @@
- these are links that my script struggle with, because they contain non ascii characters
-https://www.youtube.com/watch?v=TqkOugIeUlE&list=RDTqkOugIeUlE&index=1
-https://www.youtube.com/watch?v=8B5FY7wpkNU&list=RDTqkOugIeUlE&index=3
-https://www.youtube.com/watch?v=qWIIR9G8g4U&list=RDTqkOugIeUlE&index=15
-https://www.youtube.com/watch?v=WNadEfGnV04
-https://www.youtube.com/watch?v=M80XXxMKFWw
