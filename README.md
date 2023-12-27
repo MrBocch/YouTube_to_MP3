@@ -7,6 +7,7 @@ and run the script.
 
 ## TODO 
 
+* video showcase how it works
 * gui interface? 
 * have music save into downloads folder 
 * pytoexe?
