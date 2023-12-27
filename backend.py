@@ -23,6 +23,12 @@ def download(links):
 
     renameAlltoMp3()
 
+# this is not good because 
+# what if you have other files 
+# in this folder, it would 
+# rename it to mp3, BAD!!!
+# FIXME 
+
 def renameAlltoMp3():
     for f in os.listdir():
         sp = f.split(".")
