@@ -22,6 +22,7 @@ def download(links):
             yt.streams.get_audio_only().download()
 
     renameAlltoMp3()
+    os.chdir("..")
 
 # this is not good because 
 # what if you have other files 

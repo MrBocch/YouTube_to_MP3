@@ -1,5 +1,6 @@
 import tkinter as tk
 import ttkbootstrap as ttk
+import time
 from backend import *
 
 def gui():
@@ -9,9 +10,11 @@ def gui():
         return list(filter(lambda link: link != '', t.split("\n")))
  
     def download_button():
+        down_button.state(['disabled'])
         links = parseText()
         setup()
         download(links)
+        down_button.state(['!disabled'])
 
 
     window = ttk.Window(themename='darkly')
@@ -25,9 +28,9 @@ def gui():
     title_label.pack()
 
     input_frame = ttk.Frame(master=window)
-    Down_button = ttk.Button(master=input_frame, text='Download', command=download_button)
+    down_button = ttk.Button(master=input_frame, text='Download', command=download_button)
 
-    Down_button.pack(side='left')
+    down_button.pack(side='left')
     input_frame.pack(pady=10)
 
     text = ttk.Text(window, wrap='none' ,width=50, height=20)
