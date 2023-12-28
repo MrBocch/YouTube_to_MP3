@@ -9,6 +9,7 @@ click the download button
 
 ## TODO 
 
+* fix the double clicking download issue
 * have music save into any folder of chosing
-* pytoexe?
+* create portable executables for other os
 * say when complete download
