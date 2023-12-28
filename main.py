@@ -1,6 +1,5 @@
 import tkinter as tk
 import ttkbootstrap as ttk
-import time
 from backend import *
 
 def gui():
