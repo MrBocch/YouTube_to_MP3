@@ -3,15 +3,15 @@ import re
 from pytube import YouTube
 
 def setup():
-    if "music" not in os.listdir():
-        os.mkdir("music")
+    if "ytb2mp3_music" not in os.listdir():
+        os.mkdir("ytb2mp3_music")
 
 def getLinks(text):
     links = list(filter(lambda line: line != "", text))
     return links
 
 def download(links):
-    os.chdir("music")
+    os.chdir("ytb2mp3_music")
     for link in links:
         try: 
             yt = YouTube(link)
