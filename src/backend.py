@@ -17,9 +17,11 @@ def download(links):
             yt = YouTube(link)
         except: 
             print(f"Error on this link\n{link}")
-        else:
-            # print(f"Downloading {yt.title}")
+        
+        try:
             yt.streams.get_audio_only().download()
+        except:
+            print("by pass age restricted videos somehow")
 
     renameAlltoMp3()
     os.chdir("..")
