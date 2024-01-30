@@ -12,6 +12,7 @@ def getLinks(text):
 
 def download(links):
     os.chdir("ytb2mp3_music")
+    failed = []
     for link in links:
         try: 
             yt = YouTube(link)
@@ -21,7 +22,9 @@ def download(links):
         try:
             yt.streams.get_audio_only().download()
         except:
+            failed.append(link)
             print("by pass age restricted videos somehow")
+    return failed
 
     renameAlltoMp3()
     os.chdir("..")

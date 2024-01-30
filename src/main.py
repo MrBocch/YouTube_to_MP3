@@ -12,7 +12,13 @@ def gui():
         down_button.state(['disabled'])
         links = parseText()
         setup()
-        download(links)
+        failed = download(links)
+
+        text.delete("1.0", "9999999999999999.0")
+        text.insert("1.0", f"failed to download\n")
+        for f in failed:
+            text.insert("2.0", f"{f}\n")
+
         down_button.state(['!disabled'])
 
 
