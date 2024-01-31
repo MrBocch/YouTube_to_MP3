@@ -15,9 +15,12 @@ def gui():
         failed = download(links)
 
         text.delete("1.0", "9999999999999999.0")
-        text.insert("1.0", f"failed to download\n")
-        for f in failed:
-            text.insert("2.0", f"{f}\n")
+        if len(failed) is 0:
+            text.insert("1.0", "Finished downloading\n")
+        else:
+            text.insert("1.0", "Failed to download\n")
+            for f in failed:
+                text.insert("2.0", f"{f}\n")
 
         down_button.state(['!disabled'])
 

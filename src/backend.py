@@ -25,10 +25,11 @@ def download(links):
         except:
             failed.append(link)
             print("by pass age restricted videos somehow")
-    return failed
 
     renameAlltoMp3()
     os.chdir("..")
+
+    return failed
 
 # this is not good because 
 # what if you have other files 
