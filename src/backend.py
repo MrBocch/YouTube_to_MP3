@@ -17,6 +17,7 @@ def download(links):
         try: 
             yt = YouTube(link)
         except: 
+            failed.append(link)
             print(f"Error on this link\n{link}")
         
         try:
