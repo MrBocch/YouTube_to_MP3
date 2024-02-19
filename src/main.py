@@ -15,7 +15,7 @@ def gui():
         failed = download(links)
 
         text.delete("1.0", "9999999999999999.0")
-        if len(failed) is 0:
+        if len(failed) == 0:
             text.insert("1.0", "Finished downloading\n")
         else:
             text.insert("1.0", "Failed to download\n")
