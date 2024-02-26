@@ -1,3 +1,4 @@
+import sys
 import tkinter as tk
 import ttkbootstrap as ttk
 from backend import *
@@ -56,4 +57,28 @@ def gui():
     window.mainloop()
 
 if __name__ == "__main__":
-    gui()
+    if len(sys.argv) == 1:
+        gui()
+    else:
+        if sys.argv[1] in ["help", "--help", "-h"]:
+            print("YouTube2MP3 app")
+            print("Print version")
+            print("--version")
+            print("-v\n")
+
+            print("Read from file")
+            print("--file file.txt")
+            print("-f file.txt\n")
+
+            print("CLI version")
+            print("--cli")
+            print("-c")
+
+        elif sys.argv[1] in ["--version", "-v"]:
+            print("YouTube2MP3 0.0.1")
+        
+        elif sys.argv[1] in ["--file", "-f"]:
+            print("reading links from file instead")
+        
+        elif sys.argv[1] in ["--cli", "-c"]:
+            print("reading links from terminal instead")
