@@ -4,4 +4,4 @@ links.txt
 build/*
 dist/*
 main.spec
-
+.DS_Store

@@ -8,7 +8,7 @@ def gui():
     def parseText():
         t = text.get('1.0', 'end')
         return list(filter(lambda link: link != '', t.split("\n")))
- 
+
     def download_button():
         down_button.state(['disabled'])
         links = parseText()
@@ -45,16 +45,30 @@ def gui():
     text = ttk.Text(window, wrap='none' ,width=50, height=20)
     text.pack()
 
-    # output 
+    # output
     output_string = tk.StringVar()
-    output_lable = ttk.Label(master=window, 
+    output_lable = ttk.Label(master=window,
                             text='output',
-                            font='Calibri 24', 
+                            font='Calibri 24',
                             textvariable=output_string)
 
-    output_lable.pack(pady=10) 
+    output_lable.pack(pady=10)
 
     window.mainloop()
+
+
+def climode():
+    links = []
+    print("Enter youtube links")
+    print("just press enter to leave")
+
+    while True:
+        link = input("> ")
+
+        if link == "":
+            return links
+
+        links.append(link)
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
@@ -76,9 +90,19 @@ if __name__ == "__main__":
 
         elif sys.argv[1] in ["--version", "-v"]:
             print("YouTube2MP3 0.0.1")
-        
+
         elif sys.argv[1] in ["--file", "-f"]:
             print("reading links from file instead")
-        
+
         elif sys.argv[1] in ["--cli", "-c"]:
-            print("reading links from terminal instead")
+            links = climode()
+            setup()
+            failed = download(links)
+
+            if len(failed) == 0:
+                print("All done")
+            else:
+                print("Failed to download these due to reasons")
+                i = 0
+                for f in failed:
+                    print(f)
