@@ -70,6 +70,16 @@ def climode():
 
         links.append(link)
 
+def filemode(file):
+    links = None
+    try:
+        with open(file, "r") as f:
+            links = f.readlines()
+    except:
+        print(f"could not open file \"{file}\"")
+
+    return links
+
 if __name__ == "__main__":
     if len(sys.argv) == 1:
         gui()
@@ -92,7 +102,22 @@ if __name__ == "__main__":
             print("YouTube2MP3 0.0.1")
 
         elif sys.argv[1] in ["--file", "-f"]:
-            print("reading links from file instead")
+            if len(sys.argv) == 2:
+                print("Enter name of file")
+                exit()
+
+            # maybe should delete clean the links?
+            links = filemode(sys.argv[2])
+            setup()
+            failed = download(links)
+
+            if len(failed) == 0:
+                print("All done")
+            else:
+                print("Failed to download these due to reasons")
+                i = 0
+                for f in failed:
+                    print(f)
 
         elif sys.argv[1] in ["--cli", "-c"]:
             links = climode()
