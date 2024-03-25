@@ -109,7 +109,6 @@ if __name__ == "__main__":
             # maybe should delete clean the links?
             links = filemode(sys.argv[2])
             setup()
-            print("Beggining download")
             failed = download(links)
 
             if len(failed) == 0:
@@ -123,7 +122,6 @@ if __name__ == "__main__":
         elif sys.argv[1] in ["--cli", "-c"]:
             links = climode()
             setup()
-            print("Beggining download")
             failed = download(links)
 
             if len(failed) == 0:
