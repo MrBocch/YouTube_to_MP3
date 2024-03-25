@@ -26,7 +26,7 @@ def gui():
         down_button.state(['!disabled'])
 
 
-    window = ttk.Window(themename='darkly')
+    window = ttk.Window()
     window.title("YouTube -> MP3")
     window.geometry("500x500")
     window.resizable(False, False)
