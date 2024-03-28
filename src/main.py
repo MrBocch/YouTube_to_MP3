@@ -1,5 +1,5 @@
 import sys
-# from gui import *
+from gui import *
 from backend import *
 
 def climode():
@@ -27,7 +27,7 @@ def filemode(file):
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
-        #gui()
+        gui()
         pass
     else:
         if sys.argv[1] in ["help", "--help", "-h"]:
