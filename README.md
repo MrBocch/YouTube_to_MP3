@@ -1,4 +1,4 @@
-# YouTube to MP3 
+# YouTube to MP3
 
 ## How to use
 
@@ -7,9 +7,8 @@ click the download button
 
 ![Showcase of app](screenShot.png)
 
-## TODO 
+## TODO
 
-* fix the double clicking download issue
-* have music save into any folder of chosing
-* create portable executables for other os
-* say when complete download
+- fix the double clicking download issue
+- have music save into any folder of chosing
+- create portable executables for other os
