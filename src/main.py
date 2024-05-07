@@ -31,18 +31,15 @@ if __name__ == "__main__":
         pass
     else:
         if sys.argv[1] in ["help", "--help", "-h"]:
-            print("YouTube2MP3 app")
+            print("YouTube2MP3 app\n")
             print("Print version")
-            print("--version")
-            print("-v\n")
+            print("[-v, --version]\n")
 
             print("Read from file")
-            print("--file file.txt")
-            print("-f file.txt\n")
+            print("[-f file.txt, --file file.txt]\n")
 
             print("CLI version")
-            print("--cli")
-            print("-c")
+            print("[-c, --cli]\n")
 
         elif sys.argv[1] in ["--version", "-v"]:
             print("YouTube2MP3 0.0.1")
