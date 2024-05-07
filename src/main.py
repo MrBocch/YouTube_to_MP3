@@ -61,7 +61,6 @@ if __name__ == "__main__":
                 print("All done")
             else:
                 print("Failed to download these due to reasons")
-                i = 0
                 for f in failed:
                     print(f)
 
@@ -74,6 +73,5 @@ if __name__ == "__main__":
                 print("All done")
             else:
                 print("Failed to download these due to reasons")
-                i = 0
                 for f in failed:
                     print(f)
