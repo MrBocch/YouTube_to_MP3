@@ -1,6 +1,6 @@
 import os
 import re
-from pytube import YouTube
+import yt_dlp
 
 def setup():
     if "ytb2mp3_music" not in os.listdir():
@@ -11,23 +11,24 @@ def getLinks(text):
     return links
 
 def download(links):
-    os.chdir("ytb2mp3_music")
     failed = []
-    for link in links:
-        try:
-            yt = YouTube(link)
-        except:
-            failed.append(link)
-            print(f"Error on this link\n{link}")
-
-        try:
-            yt.streams.get_audio_only().download()
-        except:
-            failed.append(link)
-            print("by pass age restricted videos somehow")
-
-    renameAlltoMp3()
-    os.chdir("..")
+    ydl_opts = {
+        'ignoreerrors': True,
+        'format': 'bestaudio/best',
+        'outtmpl': '%(title)s.%(ext)s',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+        'quiet': False,  # Set to True to suppress output
+    }
+    os.chdir("ytb2mp3_music")
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download(links)
+    except Exception as e:
+        print(f"Download failed: {str(e)}")
 
     return failed
 
@@ -37,6 +38,7 @@ def download(links):
 # rename it to mp3, BAD!!!
 # FIXME
 
+#deprecated?
 def renameAlltoMp3():
     for f in os.listdir():
         sp = f.split(".")
@@ -46,6 +48,7 @@ def renameAlltoMp3():
         except:
             print("Something went wrong in renameing file")
 
+#deprecated?
 def renameToMp3(title):
     try:
         os.rename(f"{title}.mp4", f"{title}.mp3")
@@ -54,6 +57,7 @@ def renameToMp3(title):
         print("having issues with these types of titles")
         print("try renaming to mp3 manually\n")
 
+#deprecated?
 def sanatizeTitle(title):
     # this is a very interesting issue
     # they are certain characters that are not allowed to include in file name
