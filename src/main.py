@@ -1,5 +1,4 @@
 import sys
-from gui import *
 from backend import *
 
 def climode():
@@ -27,6 +26,7 @@ def filemode(file):
 
 if __name__ == "__main__":
     if len(sys.argv) == 1:
+        from gui import *
         gui()
         pass
     else:
